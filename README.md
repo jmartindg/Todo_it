@@ -26,6 +26,8 @@ Password: demo123
 
 - Sign in and sign up with email and password
 - Add, Update, and Delete todos
+- Sort todos by date created and title
+- Legend indicator if the todo is in progress or done
 - Mobile responsive
 
 ## Deployment
