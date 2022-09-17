@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { GoPrimitiveDot } from "react-icons/go";
 import Navbar from "../components/Navbar";
 import Todo from "../components/Todo";
+import NoTodos from "../components/NoTodos";
 
 interface TodoData {
   id: number;
@@ -104,23 +105,22 @@ const Todos = () => {
             </div>
           </header>
           {loading && <p>Loading...</p>}
-          <section className="grid grid-cols-1 gap-5 py-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {todos.length === 0 ? (
-              <p>You have no todos</p>
-            ) : (
-              todos.map((todo) => (
+          {todos.length === 0 ? (
+            <NoTodos />
+          ) : (
+            todos.map((todo) => (
+              <section key={todo.id} className="grid grid-cols-1 gap-5 py-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 <Todo
                   id={todo.id}
-                  key={todo.id}
                   title={todo.title}
                   createdAt={todo.inserted_at}
                   description={todo.description}
                   completed={todo.completed}
                   onDelete={refreshTodos}
                 />
-              ))
-            )}
-          </section>
+              </section>
+            ))
+          )}
         </section>
       </main>
     </>
