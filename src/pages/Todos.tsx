@@ -108,9 +108,10 @@ const Todos = () => {
           {todos.length === 0 ? (
             <NoTodos />
           ) : (
-            todos.map((todo) => (
-              <section key={todo.id} className="grid grid-cols-1 gap-5 py-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <section className="grid grid-cols-1 gap-5 py-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              {todos.map((todo) => (
                 <Todo
+                  key={todo.id}
                   id={todo.id}
                   title={todo.title}
                   createdAt={todo.inserted_at}
@@ -118,8 +119,8 @@ const Todos = () => {
                   completed={todo.completed}
                   onDelete={refreshTodos}
                 />
-              </section>
-            ))
+              ))}
+            </section>
           )}
         </section>
       </main>
