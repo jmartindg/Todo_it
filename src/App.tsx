@@ -19,7 +19,6 @@ const App = () => {
   useEffect(() => {
     const session = supabase.auth.session();
     setUser(session?.access_token);
-    console.log(session);
 
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
       switch (event) {
@@ -41,22 +40,8 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute isLoggedIn={!user}>
-              <Login />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <ProtectedRoute isLoggedIn={!user}>
-              <Register />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route
           path="/todos"
           element={
